@@ -1,0 +1,57 @@
+{
+  "name": "cms",
+  "version": "0.0.1",
+  "description": "Customer Management System",
+  "main": "app.js",
+  "scripts": {
+    "react:dev": "webpack-dev-server --config client/webpack.config.babel.js --open --mode development",
+    "node:dev": "NODE_PATH=server nodemon --watch server/ --exec babel-node -- server/app.js",
+    "react:build": "webpack client/src/index.js --config client/webpack.config.babel.js --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonathan-nielsen/cms.git"
+  },
+  "keywords": ["cms"],
+  "author": "Jonathan Nielsen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jonathan-nielsen/cms/issues"
+  },
+  "homepage": "https://github.com/jonathan-nielsen/cms#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "prop-types": "^15.6.2",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "webpack": "^4.28.1",
+    "webpack-cli": "^3.2.1",
+    "webpack-dev-server": "^3.1.14"
+  },
+  "dependencies": {
+    "bcrypt": "^3.0.3",
+    "body-parser": "^1.18.3",
+    "connect-redis": "^3.4.0",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.5",
+    "debug": "^4.1.1",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "express-recursive-routes": "^2.0.1",
+    "express-session": "^1.15.6",
+    "joi": "^14.3.1",
+    "mongoose": "^5.4.2",
+    "mongoose-unique-validator": "^2.0.2",
+    "nodemon": "^1.18.9"
+  },
+  "babel": {
+    "presets": ["@babel/preset-env", "@babel/preset-react"]
+  }
+}
