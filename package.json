@@ -1,36 +1,40 @@
 {
-  "name": "cms",
+  "name": "crm",
   "version": "0.0.1",
   "description": "Customer Management System",
   "main": "app.js",
   "scripts": {
     "react:dev": "webpack-dev-server --config client/webpack.config.babel.js --open --mode development",
-    "node:dev": "NODE_PATH=server nodemon --watch server/ --exec babel-node -- server/app.js",
+    "node:dev": "DEBUG=crm* NODE_PATH=server nodemon --watch server/ --exec babel-node -- server/app.js",
     "react:build": "webpack client/src/index.js --config client/webpack.config.babel.js --mode production"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jonathan-nielsen/cms.git"
+    "url": "git+https://github.com/jonathan-nielsen/crm.git"
   },
-  "keywords": ["cms"],
+  "keywords": ["crm"],
   "author": "Jonathan Nielsen",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jonathan-nielsen/cms/issues"
+    "url": "https://github.com/jonathan-nielsen/crm/issues"
   },
-  "homepage": "https://github.com/jonathan-nielsen/cms#readme",
+  "homepage": "https://github.com/jonathan-nielsen/crm#readme",
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
     "@babel/node": "^7.2.2",
+    "@babel/plugin-transform-regenerator": "^7.0.0",
+    "@babel/polyfill": "^7.2.5",
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
+    "css-loader": "^2.1.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
-    "prop-types": "^15.6.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
+    "react-router-dom": "^4.3.1",
+    "style-loader": "^0.23.1",
     "webpack": "^4.28.1",
     "webpack-cli": "^3.2.1",
     "webpack-dev-server": "^3.1.14"
@@ -52,6 +56,15 @@
     "nodemon": "^1.18.9"
   },
   "babel": {
-    "presets": ["@babel/preset-env", "@babel/preset-react"]
+    "plugins": ["@babel/plugin-transform-regenerator"],
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "useBuiltIns": "entry"
+        }
+      ],
+      "@babel/preset-react"
+    ]
   }
 }

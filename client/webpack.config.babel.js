@@ -3,6 +3,7 @@ import HtmlWebPackPlugin from 'html-webpack-plugin';
 
 module.exports = {
   context: __dirname,
+  entry: ['@babel/polyfill', './src/index.js'],
   module: {
     rules: [
       {
@@ -20,7 +21,15 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
+  },
+  devServer: {
+    historyApiFallback: true,
+    contentBase: './',
   },
   plugins: [
     new HtmlWebPackPlugin({

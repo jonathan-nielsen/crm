@@ -12,7 +12,7 @@ const schema = Joi.object()
   })
   .required();
 
-router.post('/login', login);
+router.post('/', login);
 
 async function login(req, res) {
   const result = Joi.validate(req.body, schema);
@@ -34,7 +34,7 @@ async function login(req, res) {
       req.session.userId = user._id;
     }
   } catch (err) {
-    res.status(400).send(err.message);
+    return res.status(400).send(err.message);
   }
 
   res.send('Successfullt logged in.');

@@ -13,13 +13,13 @@ import routes from 'express-recursive-routes';
 import session from 'express-session';
 
 global.log = {
-  api: debug('cms:api'),
-  config: debug('cms:config'),
-  db: debug('cms:db*'),
-  redis: debug('cms:db:redis'),
-  mongodb: debug('cms:db:mongodb'),
-  model: debug('cms:model'),
-  route: debug('cms:route'),
+  api: debug('crm:api'),
+  config: debug('crm:config'),
+  db: debug('crm:db*'),
+  redis: debug('crm:db:redis'),
+  mongodb: debug('crm:db:mongodb'),
+  model: debug('crm:model'),
+  route: debug('crm:route'),
 };
 global.log.config('Packages loaded.');
 
