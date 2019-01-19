@@ -4,8 +4,8 @@
   "description": "Customer Management System",
   "main": "app.js",
   "scripts": {
-    "react:dev": "webpack-dev-server --config client/webpack.config.babel.js --open --mode development",
     "node:dev": "DEBUG=crm* NODE_PATH=server nodemon --watch server/ --exec babel-node -- server/app.js",
+    "react:dev": "webpack-dev-server --config client/webpack.config.babel.js --open --mode development",
     "react:build": "webpack client/src/index.js --config client/webpack.config.babel.js --mode production"
   },
   "repository": {

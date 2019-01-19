@@ -22,7 +22,7 @@ const schema = Joi.object()
   })
   .required();
 
-router.post('/register', register);
+router.post('/', register);
 
 async function register(req, res) {
   global.log.route(`${req.method} ${req.originalUrl}`);

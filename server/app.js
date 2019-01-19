@@ -67,11 +67,10 @@ const redisSessionStoreOptions = {
     return Math.min(options.attempt * 100, 3000);
   },
 };
+
 const redisStore = new RedisStore(redisSessionStoreOptions);
+global.log.redis('Connecting to db...');
 redisStore.client
-  .on('connect', () => {
-    global.log.redis('Connecting to db...');
-  })
   .on('ready', () => {
     global.log.redis('Successfully connected to db!');
     dbConnections += 1;

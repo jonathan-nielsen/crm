@@ -4,18 +4,37 @@ import '../styles/components/register-form.css';
 class Register extends React.Component {
 	constructor(props) {
 		super();
+
+		this.state = {
+			email: '',
+			password: '',
+			confirm_password: '',
+		};
+
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleChange = this.handleChange.bind(this);
+	}
+
+	handleChange(event) {
+		const target = event.target;
+		const name = target.name;
+		const value = target.type === 'checkbox' ? target.checked : target.value;
+
+		this.setState({
+			[name]: value,
+		});
 	}
 
 	async handleSubmit(event) {
 		event.preventDefault();
 
-		const data = new FormData(event.target);
-
 		try {
-			const response = await fetch('http://localhost:3000/api/user/register', {
+			const response = await fetch('http://127.0.0.1:3000/api/user/register', {
 				method: 'POST',
-				body: data,
+				headers: {
+					'Content-type': 'application/json',
+				},
+				body: JSON.stringify(this.state),
 			});
 
 			if (response.status === 200) {
@@ -24,28 +43,50 @@ class Register extends React.Component {
 				console.log('error', response);
 			}
 		} catch (err) {
-			console.log(2, err);
+			console.log(err);
 		}
 	}
 
 	render() {
 		return (
 			<div className="container">
-				<h1>Login</h1>
-				<form className="login-form" onSubmit={this.handleSubmit}>
+				<h1>Register</h1>
+				<form className="register-form" onSubmit={this.handleSubmit}>
 					<div className="form-group">
 						<label htmlFor="email">Email address</label>
-						<input type="email" name="email" className="form-control" id="email" placeholder="Enter email" />
+						<input
+							value={this.state.email}
+							onChange={this.handleChange}
+							type="email"
+							name="email"
+							className="form-control"
+							id="email"
+							placeholder="Enter email"
+						/>
 					</div>
 					<div className="form-group">
 						<label htmlFor="password">Password</label>
-						<input type="password" name="password" className="form-control" id="password" placeholder="Password" />
+						<input
+							value={this.state.password}
+							onChange={this.handleChange}
+							type="password"
+							name="password"
+							className="form-control"
+							id="password"
+							placeholder="Password"
+						/>
 					</div>
-					<div className="form-check">
-						<input type="checkbox" name="remember_me" className="form-check-input" id="remember-me" value="true" />
-						<label className="form-check-label" htmlFor="remember-me">
-							Remember me
-						</label>
+					<div className="form-group">
+						<label htmlFor="confirm-password">Password</label>
+						<input
+							value={this.state.confirm_password}
+							onChange={this.handleChange}
+							type="password"
+							name="confirm_password"
+							className="form-control"
+							id="confirm-password"
+							placeholder="Confirm password"
+						/>
 					</div>
 					<button type="submit" className="btn btn-primary">
 						Submit
@@ -55,4 +96,4 @@ class Register extends React.Component {
 		);
 	}
 }
-export default Login;
+export default Register;
